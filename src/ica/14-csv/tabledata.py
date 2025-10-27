@@ -108,3 +108,10 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+def lookup_office(Building, OfficeNum):
+    for row in table:
+        if row[office number ] == OfficeNum
+
+
+
