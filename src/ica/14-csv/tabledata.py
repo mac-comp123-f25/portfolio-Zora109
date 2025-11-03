@@ -106,12 +106,4 @@ def main():
     print("Sunsets before 4pm =", count_sunsets_before(16, sun_table))
 
 
-if __name__ == '__main__':
-    main()
-
-def lookup_office(Building, OfficeNum):
-    for row in table:
-        if row[office number ] == OfficeNum
-
-
 
