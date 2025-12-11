@@ -1,0 +1,10 @@
+{
+    "item": "notebook",
+    "quantity": 3,
+    "price": 2.5,
+    "tags": [
+        "stationery",
+        "school",
+        "paper"
+    ]
+}
