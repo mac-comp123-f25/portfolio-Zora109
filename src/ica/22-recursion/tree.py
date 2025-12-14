@@ -1,10 +1,10 @@
 import tkinter as tk
 import turtle
+import random
 
 
 def check_draw_tree(sz):
     """Tester function for the draw_tree"""
-
     # setup window
     win = tk.Toplevel()
     win.title(f"Tree Fractal {sz}")
@@ -22,22 +22,30 @@ def check_draw_tree(sz):
     t.speed(0)
     t.color("green")
 
-    # draw the draw_tree
+    # draw the tree
     draw_tree(sz, t)
 
 
 def draw_tree(branch_len, turt):
-    """The Interactive Textbook's draw_fractal_treedraw_fractal_tree drawing fractal function.
-    Takes in the length of the main branch and a turtle, and it draws
-    a symmetrical draw_fractal_treedraw_fractal_tree shape with branching to left and right. The fractal
-    stops if the branch length gets to be less than or equal to 5"""
+    """
+    Modified fractal tree with slight randomness and drooping branches.
+    Differences from original:
+      - Random angle variation for more natural look.
+      - Unequal branch lengths for asymmetry.
+      - Slightly reduced right branch angle for a "weeping" tree shape.
+    """
     if branch_len > 5:
+        angle = random.randint(15, 25)         # small random turn angle
+        shrink = random.randint(10, 18)        # vary branch shortening
+
         turt.forward(branch_len)
-        turt.right(20)
-        draw_tree(branch_len - 15, turt)
-        turt.left(40)
-        draw_tree(branch_len - 15, turt)
-        turt.right(20)
+        turt.right(angle)
+        draw_tree(branch_len - shrink, turt)   # right branch shorter
+
+        turt.left(angle * 2)                   # left branch turns wider
+        draw_tree(branch_len - shrink - 5, turt)
+
+        turt.right(angle)                      # reset heading
         turt.backward(branch_len)
 
 
@@ -45,10 +53,9 @@ if __name__ == '__main__':
     root = tk.Tk()
     root.withdraw()
 
-    # write tests below
+    # test multiple sizes
     check_draw_tree(30)
     check_draw_tree(75)
     check_draw_tree(125)
 
     root.mainloop()
-
